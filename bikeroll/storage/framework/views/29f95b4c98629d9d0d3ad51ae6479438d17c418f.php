@@ -1,0 +1,1 @@
+<h1>Soy la pagina principal</h1><?php /**PATH C:\xampp\htdocs\bikeroll\resources\views/paginaPrincipal.blade.php ENDPATH**/ ?>
