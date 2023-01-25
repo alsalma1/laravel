@@ -1,8 +1,7 @@
-<script src="{{url('C:\xampp\htdocs\bikeRoll\resources\views\scripts\script.js')}}" type="text/javascript"></script>
 <h1>Soy la pagina principal</h1>
 
 <div style="border:1px solid;width:20%;margin:auto">
-    <div id="div1" style="border:1px solid;width:100%;text-align:center" onmouseover="mostrarMenu()">
+    <div id="div1" style="border:1px solid;width:100%;text-align:center">
         <h3>Gestionar carreras</a></h3>
         <p><a href="">Añadir carrera</a></p>
         <p><a href="">Editar carrera</a></p>
