@@ -1,6 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\principalPageController;
+use App\Http\Controllers\adminController;
+use App\Http\Controllers\aseguradoraController;
+use App\Http\Controllers\sponsorController;
+use App\Http\Controllers\corredorController;
+use App\Http\Controllers\carreraController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -13,21 +20,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('paginaPrincipal', function () {
-    return view('admin.paginaPrincipal');
-});
+Route::get('/', principalPageController::class);
 
 //Aseguradores
-Route::get('anyadirAsegurador', function () {
-    return view('admin.aseguradores.anyadirAsegurador');
-});
-Route::get('editarAsegurador' , function() {
-    return view('admin.aseguradores.editarAsegurador');
-});
-Route::get('desactivarAsegurador' , function() {
-    return view('admin.aseguradores.desactivarAsegurador');
-});
+Route::get('anyadirAsegurador', [aseguradoraController::class , 'create']);
+
+Route::get('editarAsegurador' , [aseguradoraController::class , 'edit']);
+
+// Route::get('desactivarAsegurador' , function() {
+//     return view('admin.aseguradores.desactivarAsegurador');
+// });
