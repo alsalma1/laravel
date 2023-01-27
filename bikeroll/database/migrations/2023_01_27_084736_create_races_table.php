@@ -14,9 +14,9 @@ class CreateRacesTable extends Migration
     public function up()
     {
         Schema::create('races', function (Blueprint $table) {
-            $table->id('id');
+            $table->id();
             $table->longText('description');
-            $table->float('unevenness',8,2);//desnivel
+            $table->float('unevenness',4,2);//desnivel
             $table->string('image');
             $table->integer('number_participants');
             $table->date('date');
