@@ -8,15 +8,16 @@ class aseguradoraController extends Controller
 {
     public function index(){
         //Mostrar todas las aseguradoras
+        return view('admin.aseguradoras.mostrarTodosAs');
     }
 
     public function create(){
         //Formulario para crear una aseguradora
-        return view('admin.aseguradores.anyadirAsegurador');
+        return view('admin.aseguradoras.anyadirAseguradora');
     }
 
     public function edit(){
         //Formulario para modificar una aseguradora
-        return view('admin.aseguradores.editarAsegurador');
+        return view('admin.aseguradoras.editarAseguradora');
     }
 }
