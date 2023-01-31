@@ -4,7 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\principalPageController;
 use App\Http\Controllers\adminController;
 use App\Http\Controllers\aseguradoraController;
-
+use App\Http\Controllers\sponsorController;
+use App\Http\Controllers\corredorController;
+use App\Http\Controllers\carreraController;
 
 
 /*
@@ -22,11 +24,13 @@ Route::get('/', principalPageController::class);
 
 Route::get('/paginaPrincipal', [principalPageController::class , 'show']);
 
+Route::post('/formAdmin', [adminController::class , 'create']);
+
 //Aseguradores
 Route::get('mostrarTodosAs', [aseguradoraController::class , 'index']);
 Route::get('anyadirAseguradora', [aseguradoraController::class , 'create']);
 Route::get('editarAsegurador' , [aseguradoraController::class , 'edit']);
-Route::get('/' , [adminController::class , 'create']);
+
 // Route::get('desactivarAsegurador' , function() {
 //     return view('admin.aseguradores.desactivarAsegurador');
 // });
