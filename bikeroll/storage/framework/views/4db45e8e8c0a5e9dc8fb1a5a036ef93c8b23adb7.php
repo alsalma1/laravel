@@ -2,7 +2,7 @@
 <h1>Añadir carrera</h1>
 
 <form action="anyadirCarrera" method="POST" accept-charset="UTF-8" class="formaddcarrera">
-  @csrf
+  <?php echo csrf_field(); ?>
     <div class="form-group row">
       <label for="description" class="col-sm-2 col-form-label">Descripción</label>
       <div class="col-sm-10">
@@ -71,4 +71,4 @@
         <button type="submit" class="btn btn-primary" name="send">Iniciar Sesión</button>
       </div>
     </div>
-</form>
+</form><?php /**PATH C:\xampp\htdocs\bikeroll\resources\views/admin/carreras/anyadirCarrera.blade.php ENDPATH**/ ?>

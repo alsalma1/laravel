@@ -1,0 +1,2 @@
+<h1>mostrarTodosAs</h1>
+<a href="<?php echo e(url('/paginaPrincipal')); ?>">Volver atras</a><?php /**PATH C:\xampp\htdocs\bikeroll\resources\views/admin/aseguradoras/mostrarTodosAs.blade.php ENDPATH**/ ?>

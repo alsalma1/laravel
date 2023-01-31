@@ -26,10 +26,20 @@ Route::get('/paginaPrincipal', [principalPageController::class , 'show']);
 
 Route::post('/formAdmin', [adminController::class , 'create']);
 
+
 //Aseguradores
 Route::get('mostrarTodosAs', [aseguradoraController::class , 'index']);
 Route::get('anyadirAseguradora', [aseguradoraController::class , 'create']);
 Route::get('editarAsegurador' , [aseguradoraController::class , 'edit']);
+
+
+
+//Carrera
+Route::get('anyadirCarrera', [carreraController::class , 'addRace']);
+Route::get('editarCarrera', [carreraController::class , 'editRace']);
+Route::get('desactivarCarrera', [carreraController::class , 'deleteRace']);
+
+
 
 // Route::get('desactivarAsegurador' , function() {
 //     return view('admin.aseguradores.desactivarAsegurador');
