@@ -11,16 +11,18 @@ class adminController extends Controller
         $admin = new Admin();
         if (isset($_POST['send'])){
             $user_name = $admin->user_name = $_POST['email'];
+            $passwd=$_POST['passwd'];
             //Si existe la clave primaria
-            if (Admin::where('user_name', $user_name )->exists()) {
-                echo "ya existe";
+            if (Admin::where('user_name', $user_name )->where('passwd',$passwd)->exists()) {
+                return redirect('/paginaPrincipal');
             }
             else{
-                $user_name = $admin->user_name = $_POST['email'];
-                $admin->passwd = $_POST['passwd'];
-                $admin;
-                $admin->save();
-                echo "no existe";
+                // $user_name = $admin->user_name = $_POST['email'];
+                // $admin->passwd = $_POST['passwd'];
+                // $admin;
+                // $admin->save();
+                ?><script>alert('Nombre de usuario o contraseña incorrectos');</script><?php
+                return view('admin.formAdmin');
             }
         }
     }
