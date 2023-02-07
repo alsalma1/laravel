@@ -19,6 +19,7 @@ class CreateSponsorsTable extends Migration
             $table->longText('description');
             $table->string('logo');//logo link
             $table->boolean('main_plain');//plana principal
+            $table->boolean('sponsorState')->default(1);
             $table->timestamps();
         });
     }
