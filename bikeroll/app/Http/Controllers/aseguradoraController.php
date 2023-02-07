@@ -80,3 +80,4 @@ class aseguradoraController extends Controller
         }
     }
 }
+
