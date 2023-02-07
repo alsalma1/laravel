@@ -21,10 +21,11 @@ use App\Http\Controllers\carreraController;
 */
 
 Route::get('/', principalPageController::class);
-//Pagina principal
+
 Route::get('/paginaPrincipal', [principalPageController::class , 'show']);
-//Admin
+
 Route::post('/formAdmin', [adminController::class , 'create']);
+
 
 //Aseguradores
 Route::get('anyadirAseguradora', [aseguradoraController::class , 'create']);
@@ -34,12 +35,23 @@ Route::get('editarAseguradora/{id}' , [aseguradoraController::class , 'edit']);
 Route::post('editarAseguradora/{id}' , [aseguradoraController::class , 'edit']);
 Route::get('activarAseguradora/{id}' , [aseguradoraController::class , 'activate']);
 
+
 //Sponsors
 Route::get('anyadirSponsor' , [sponsorController::class , 'create']);
 Route::post('anyadirSponsor' , [sponsorController::class , 'create']);
 Route::get('mostrarSponsors', [sponsorController::class , 'index'])->name('mostrarSponsors');
 
+
+
 //Carrera
-Route::get('anyadirCarrera', [carreraController::class , 'addRace']);
-Route::get('editarCarrera', [carreraController::class , 'editRace']);
+Route::get('anyadirCarrera', [carreraController::class , 'showAddRace']);
+Route::post('anyadirCarrera', [carreraController::class , 'addRace']);
+
+Route::get('editarCarrera', [carreraController::class , 'showEditRace']);
 Route::get('desactivarCarrera', [carreraController::class , 'deleteRace']);
+
+
+
+// Route::get('desactivarAsegurador' , function() {
+//     return view('admin.aseguradores.desactivarAsegurador');
+// });
