@@ -35,11 +35,15 @@ Route::get('editarAseguradora/{id}' , [aseguradoraController::class , 'edit']);
 Route::post('editarAseguradora/{id}' , [aseguradoraController::class , 'edit']);
 Route::get('activarAseguradora/{id}' , [aseguradoraController::class , 'activate']);
 
-
 //Sponsors
 Route::get('anyadirSponsor' , [sponsorController::class , 'create']);
 Route::post('anyadirSponsor' , [sponsorController::class , 'create']);
 Route::get('mostrarSponsors', [sponsorController::class , 'index'])->name('mostrarSponsors');
+Route::get('editarSponsor/{id}' , [sponsorController::class , 'edit']);
+Route::post('editarSponsor/{id}' , [sponsorController::class , 'edit']);
+Route::get('activarSponsor/{id}' , [sponsorController::class , 'activate']);
+Route::get('editarLogo/{id}' , [sponsorController::class , 'editLogo']);
+Route::post('editarLogo/{id}' , [sponsorController::class , 'editLogo']);
 
 
 
@@ -49,9 +53,3 @@ Route::post('anyadirCarrera', [carreraController::class , 'addRace']);
 
 Route::get('editarCarrera', [carreraController::class , 'showEditRace']);
 Route::get('desactivarCarrera', [carreraController::class , 'deleteRace']);
-
-
-
-// Route::get('desactivarAsegurador' , function() {
-//     return view('admin.aseguradores.desactivarAsegurador');
-// });
