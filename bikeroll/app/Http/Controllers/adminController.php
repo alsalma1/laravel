@@ -14,16 +14,18 @@ class adminController extends Controller
             $passwd=$_POST['passwd'];
             //Si existe la clave primaria
             if (Admin::where('user_name', $user_name )->where('passwd',$passwd)->exists()) {
+                $_SESSION['admin'] = $_POST['email'];
                 return redirect('/paginaPrincipal');
             }
             else{
-                // $user_name = $admin->user_name = $_POST['email'];
-                // $admin->passwd = $_POST['passwd'];
-                // $admin;
-                // $admin->save();
                 ?><script>alert('Nombre de usuario o contraseña incorrectos');</script><?php
                 return view('admin.formAdmin');
             }
         }
+    }
+
+    public function logout(Request $request){
+        $request->session()->flush();
+        return redirect('/');
     }
 }
