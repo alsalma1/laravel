@@ -1,2 +1,0 @@
-<h1>Desactivar Asegurador</h1>
-<a href="<?php echo e(url('paginaPrincipal')); ?>">Volver atras</a><?php /**PATH C:\xampp\htdocs\bikeroll\resources\views/admin/aseguradores/desactivarAsegurador.blade.php ENDPATH**/ ?>
