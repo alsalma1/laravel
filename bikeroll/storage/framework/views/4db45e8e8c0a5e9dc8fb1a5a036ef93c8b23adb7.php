@@ -20,7 +20,7 @@
     <div class="form-group row">
         <label for="mapa" class="col-sm-2 col-form-label">Imagen del mapa</label>
         <div class="col-sm-10">
-          <input type="file" class="form-control" id="mapa" name="image" required>
+          <input type="file" class="form-control" id="mapa" name="image" accept=".jpg" required>
         </div>
     </div>
 
@@ -55,7 +55,7 @@
     <div class="form-group row">
         <label for="cartel" class="col-sm-2 col-form-label">Cartel de promoción</label>
         <div class="col-sm-10">
-          <input type="file" class="form-control" id="cartel" name="promotion" required>
+          <input type="file" class="form-control" id="cartel" name="promotion" accept=".jpg" required>
         </div>
     </div>
 

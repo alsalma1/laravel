@@ -35,21 +35,38 @@ Route::get('editarAseguradora/{id}' , [aseguradoraController::class , 'edit']);
 Route::post('editarAseguradora/{id}' , [aseguradoraController::class , 'edit']);
 Route::get('activarAseguradora/{id}' , [aseguradoraController::class , 'activate']);
 
+
 //Sponsors
 Route::get('anyadirSponsor' , [sponsorController::class , 'create']);
 Route::post('anyadirSponsor' , [sponsorController::class , 'create']);
 Route::get('mostrarSponsors', [sponsorController::class , 'index'])->name('mostrarSponsors');
-Route::get('editarSponsor/{id}' , [sponsorController::class , 'edit']);
-Route::post('editarSponsor/{id}' , [sponsorController::class , 'edit']);
-Route::get('activarSponsor/{id}' , [sponsorController::class , 'activate']);
-Route::get('editarLogo/{id}' , [sponsorController::class , 'editLogo']);
-Route::post('editarLogo/{id}' , [sponsorController::class , 'editLogo']);
 
 
 
 //Carrera
 Route::get('anyadirCarrera', [carreraController::class , 'showAddRace']);
+
 Route::post('anyadirCarrera', [carreraController::class , 'addRace']);
 
-Route::get('editarCarrera', [carreraController::class , 'showEditRace']);
-Route::get('desactivarCarrera', [carreraController::class , 'deleteRace']);
+//cambiar estado carrera
+Route::get('editarCarrera', [carreraController::class , 'showEditRace'])->name('editarCarrera');
+Route::get('estadoCarrera/{id}', [carreraController::class , 'changeState']);
+
+//editar datos carrera
+Route::get('datosCarrera/{id}', [carreraController::class , 'editRace']);
+Route::post('datosCarrera/{id}', [carreraController::class , 'editRace']);
+
+//editar imagen carrera
+Route::get('imagenCarrera/{id}', [carreraController::class , 'editImage']);
+Route::post('imagenCarrera/{id}', [carreraController::class , 'editImage']);
+
+//editar cartel de promoción carrera
+Route::get('cartelCarrera/{id}', [carreraController::class , 'editProm']);
+Route::post('cartelCarrera/{id}', [carreraController::class , 'editProm']);
+
+
+
+
+// Route::get('desactivarAsegurador' , function() {
+//     return view('admin.aseguradores.desactivarAsegurador');
+// });
