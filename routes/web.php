@@ -45,10 +45,17 @@ Route::get('mostrarSponsors', [sponsorController::class , 'index'])->name('mostr
 
 //Carrera
 Route::get('anyadirCarrera', [carreraController::class , 'showAddRace']);
+
 Route::post('anyadirCarrera', [carreraController::class , 'addRace']);
 
-Route::get('editarCarrera', [carreraController::class , 'showEditRace']);
-Route::get('desactivarCarrera', [carreraController::class , 'deleteRace']);
+
+Route::get('editarCarrera', [carreraController::class , 'showEditRace'])->name('editarCarrera');
+Route::get('estadoCarrera/{id}', [carreraController::class , 'changeState']);
+
+Route::get('datosCarrera/{id}', [carreraController::class , 'editRace']);
+Route::post('datosCarrera/{id}', [carreraController::class , 'editRace']);
+
+
 
 
 

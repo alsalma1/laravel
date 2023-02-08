@@ -1,12 +1,17 @@
-
-<h1>Añadir carrera</h1>
-
-<form action="anyadirCarrera" method="POST" accept-charset="UTF-8" class="formaddcarrera" enctype="multipart/form-data">
-  @csrf
+<style>
+    td,th{border: 1px solid;}
+    td{width: 80px}
+    table{width: 1200px;margin: auto;text-align: center;}
+    img{width: 50%;height: 50%}
+</style>
+<h1>Editar carrera</h1>
+<form action="{{$carreras['id']}}" method="POST">
+    @csrf
+    @csrf
     <div class="form-group row">
       <label for="description" class="col-sm-2 col-form-label">Descripción</label>
       <div class="col-sm-10">
-        <textarea id="description" name="description" required></textarea>
+        <textarea id="description" name="description" required value="{{$carreras['description']}}"></textarea>
       </div>
     </div>
 
@@ -71,6 +76,6 @@
         <button type="submit" class="btn btn-primary" name="send">Crear carrera</button>
       </div>
     </div>
-</form>
+</form>   
 
-<p><a href="{{url('paginaPrincipal')}}">Volver atrás</a></p>
+<a href="{{url('/paginaPrincipal')}}">Volver atras</a>

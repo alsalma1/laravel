@@ -15,8 +15,11 @@
         <th>Km</th>
         <th>Fecha</th>
         <th>Promocion</th>
-        <th>Estado</th>
         <th>Precio del patrocinio</th>
+        <th>Estado</th>
+        <th>Editar</th>
+        <th>Subir fotos</th>
+        <th>Ver fotos</th>
     </tr>
     @foreach($carreras as $row)
         @php
@@ -28,23 +31,38 @@
             <td>{{$row['unevenness']}} km</td>
             
             <?php $image=preg_replace('([^A-Za-z0-9 ])', '', $row['image'])?>
-            <td><img src="../resources/img/<?php echo strtolower($image) ?>.png" alt=""></td>
+            <td><img src="../resources/img/<?php echo strtolower($image) ?>.jpg" alt=""></td>
 
             <td>{{$row['number_participants']}}</td>
             <td>{{$row['km']}}</td>
             <td>{{$row['date']}}</td>
 
             <?php $prom=preg_replace('([^A-Za-z0-9 ])', '', $row['promotion'])?>
-            <td><img src="../resources/img/<?php echo strtolower($prom) ?>.png" alt=""></td>
+            <td><img src="../resources/img/<?php echo strtolower($prom) ?>.jpg" alt=""></td>
+
+            <td>{{$row['price']}}€</td>
 
             <td>
                 @if ($row['state'] == 0)
-                    <a href="activarAseguradora/{{$id}}"><img src="../resources/img/off.png" alt=""></a>
+                    <a href="estadoCarrera/{{$id}}"><img src="../resources/img/off.png" alt=""></a>
                 @else
-                    <a href="activarAseguradora/{{$id}}"><img src="../resources/img/on.png" alt=""></a>
+                    <a href="estadoCarrera/{{$id}}"><img src="../resources/img/on.png" alt=""></a>
                 @endif
             </td>
-            <td>{{$row['price']}}€</td>
+
+
+            <td><a href="datosCarrera/{{$id}}"><img src="../resources/img/edit.png" alt=""></td>
+
+            <?php 
+                //Si la carrera ya ha terminado permitir subir fotos
+                if (date($row['date'])<date('Y-m-d H:i:s')){   
+                    ?><td><a href="activarAseguradora/{{$id}}"><img src="../resources/img/upload.png" alt=""></td><?php
+                }
+                else{
+                    ?><td><a href="activarAseguradora/{{$id}}"><img src="../resources/img/bloquear.png" alt=""></td><?php
+                }
+            ?>
+            <td><a href="activarAseguradora/{{$id}}"><img src="../resources/img/ver.png" alt=""></td>
 
         </tr>
     @endforeach

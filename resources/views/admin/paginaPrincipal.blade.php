@@ -3,10 +3,8 @@
 <div style="border:1px solid;width:20%;margin:auto">
     <div id="div1" style="border:1px solid;width:100%;text-align:center">
         <h3>Gestionar carreras</a></h3>
-        <p><a href="">Mostrar todos</a></p>
         <p><a href="{{url('anyadirCarrera')}}">Añadir carrera</a></p>
-        <p><a href="{{url('editarCarrera')}}">Editar carrera</a></p>
-        <p><a href="{{url('desactivarCarrera')}}">Desactivar carrera</a></p>
+        <p><a href="{{url('editarCarrera')}}">Info carreras</a></p>
     </div>
     
     <div style="border:1px solid;width:100%;text-align:center">
