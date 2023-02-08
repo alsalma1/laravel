@@ -21,15 +21,18 @@ class aseguradoraController extends Controller
             $cif = $insurance->CIF = $_POST['cif'];
             //Si existe la clave primaria
             if (Insurance::where('CIF', $cif)->exists()) {
-                ?><script>alert("ya existe esta aseguradora!")</script><?php
-                return redirect('anyadirAseguradora');
+                echo "ya existe esta aseguradora";
+                return redirect('/paginaPrincipal');
             }
             else{
                 $insurance->name = $_POST['insuranceName'];
                 $insurance->address = $_POST['insuranceAdress'];
                 $insurance->save();
-                ?><script>alert("Se ha creado correctamente!")</script><?php
-                return redirect('mostrarTodosAs');
+                echo "se ha creado correctamente";
+                redirect('/paginaPrincipal');
+                // return view('admin.aseguradoras.editarAseguradora' , [
+                //     'insurance' => $insurance
+                // ]);
             }
         }        
         else{
@@ -51,9 +54,10 @@ class aseguradoraController extends Controller
         $insurance->save();
         $insurance = Insurance::all();
         
-        return redirect('mostrarTodosAs');   
+        return redirect()->route('mostrarTodosAs' , [
+            'insurance'=>$insurance
+        ]);   
     }
-
     public function edit(Request $request){
         $id = $request->id;
         //Formulario para modificar una aseguradora
@@ -65,7 +69,9 @@ class aseguradoraController extends Controller
             $insurance->address = $request->input('insuranceAdress');
             $insurance->save();
             $insurance = Insurance::all();
-            return redirect('mostrarTodosAs');
+            return redirect()->route('mostrarTodosAs' , [
+                'insurance'=>$insurance
+            ]); 
         }      
         else{
             return view('admin.aseguradoras.editarAseguradora' ,[
@@ -74,3 +80,4 @@ class aseguradoraController extends Controller
         }
     }
 }
+

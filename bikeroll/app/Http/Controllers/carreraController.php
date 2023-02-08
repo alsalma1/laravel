@@ -32,15 +32,18 @@ class carreraController extends Controller
             //subir la imagen
             if($request->hasFile('image')){
                 $imagen = $request->file('image');
+                $promotion = $request->file('promotion');
 
                 //aquí le asignamos el nombre
                 $nombreimagen = Str::slug($request->file('image')).".".$imagen->guessExtension();
+                $nombreprom = Str::slug($request->file('promotion')).".".$promotion->guessExtension();
 
                 //y la ruta
                 $ruta = public_path("../resources/img/");
     
                 //$imagen->move($ruta,$nombreimagen);
-                copy($imagen->getRealPath(),$ruta.$nombreimagen);        
+                copy($imagen->getRealPath(),$ruta.$nombreimagen);     
+                copy($promotion->getRealPath(),$ruta.$nombreprom);     
                 
             }
         }
@@ -57,8 +60,10 @@ class carreraController extends Controller
 
 
     public function showEditRace(){
-        $carreras = DB::table('races')->get();
-        return view('admin.carreras.editarCarrera');  
+        $carreras = Race::all();
+        return view('admin.carreras.editarCarrera',[
+            'carreras' => $carreras
+        ]);  
         //echo $carreras;
     }
 

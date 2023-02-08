@@ -20,7 +20,7 @@ class CreateRacesTable extends Migration
             $table->string('image');
             $table->integer('number_participants');
             $table->integer('km');
-            $table->date('date');
+            $table->datetime('date');
             $table->string('promotion');//link of the promotion poster
             $table->string('start');
             $table->boolean('state');//if it's activated or not
