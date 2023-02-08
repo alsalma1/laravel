@@ -58,6 +58,111 @@ class carreraController extends Controller
         return view('admin.carreras.anyadirCarrera');
     }
 
+    public function changeState(Request $request){
+        $race= Race::find($request->id);
+        $estado = $race->state;
+        if($estado==1){
+            $race->state = 0;
+        }
+        else{
+            $race->state = 1;
+        }
+        $race->save();
+        $race = Race::all();
+        
+        //hay que hacerlo asi si no peta y no se muestran las imagenes por el id
+        return redirect()->route('editarCarrera',[
+            'carreras' => $race
+        ]);  
+    }
+
+    public function editRace(Request $request){
+        $carrera = Race::find($request->id);
+        if ($request->isMethod('post')){
+            $carrera->description = $request->input('description');
+            $carrera->unevenness = $request->input('unevenness');
+            $carrera->number_participants = $request->input('number_participants');
+            $carrera->km = $request->input('km');
+            $carrera->date = $request->input('date');
+            $carrera->start = $request->input('start');
+            $carrera->price = $request->input('price');
+
+
+            $carrera->save();
+            $carrera = Race::all();
+            return redirect()->route('editarCarrera' , [
+                'carreras'=>$carrera
+            ]); 
+        }      
+        else{
+            return view('admin.carreras.cambiarCarrera' ,[
+                'carreras' => $carrera
+            ]);
+        }
+    }
+
+    public function editImage(Request $request){
+        $carrera = Race::find($request->id);
+        if ($request->isMethod('post')){
+            //importante poner file no input
+            $carrera->image = $request->file('image');
+            //lo de subir la imagen... importante multipart/form-data
+            if($request->hasFile('image')){
+                $imagen = $request->file('image');
+
+                //aquí le asignamos el nombre
+                $nombreimagen = Str::slug($request->file('image')).".".$imagen->guessExtension();
+                //y la ruta
+                $ruta = public_path("../resources/img/");
+    
+                //$imagen->move($ruta,$nombreimagen);
+                copy($imagen->getRealPath(),$ruta.$nombreimagen);     
+            }
+
+            $carrera->save();
+            $carrera = Race::all();
+            return redirect()->route('editarCarrera' , [
+                'carreras'=>$carrera
+            ]); 
+        }      
+        else{
+            return view('admin.carreras.cambiarImagen' ,[
+                'carreras' => $carrera
+            ]);
+        }
+    }
+
+
+    public function editProm(Request $request){
+        $carrera = Race::find($request->id);
+        if ($request->isMethod('post')){
+            //importante poner file no input
+            $carrera->promotion = $request->file('image');
+            //lo de subir la imagen... importante multipart/form-data
+            if($request->hasFile('image')){
+                $imagen = $request->file('image');
+
+                //aquí le asignamos el nombre
+                $nombreimagen = Str::slug($request->file('image')).".".$imagen->guessExtension();
+                //y la ruta
+                $ruta = public_path("../resources/img/");
+    
+                //$imagen->move($ruta,$nombreimagen);
+                copy($imagen->getRealPath(),$ruta.$nombreimagen);     
+            }
+
+            $carrera->save();
+            $carrera = Race::all();
+            return redirect()->route('editarCarrera' , [
+                'carreras'=>$carrera
+            ]); 
+        }      
+        else{
+            return view('admin.carreras.cambiarCartel' ,[
+                'carreras' => $carrera
+            ]);
+        }
+    }
 
     public function showEditRace(){
         $carreras = Race::all();
