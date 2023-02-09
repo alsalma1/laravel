@@ -40,8 +40,11 @@ Route::get('activarAseguradora/{id}' , [aseguradoraController::class , 'activate
 Route::get('anyadirSponsor' , [sponsorController::class , 'create']);
 Route::post('anyadirSponsor' , [sponsorController::class , 'create']);
 Route::get('mostrarSponsors', [sponsorController::class , 'index'])->name('mostrarSponsors');
-
-
+Route::get('editarSponsor/{id}' , [sponsorController::class , 'edit']);
+Route::post('editarSponsor/{id}' , [sponsorController::class , 'edit']);
+Route::get('activarSponsor/{id}' , [sponsorController::class , 'activate']);
+Route::get('editarLogo/{id}' , [sponsorController::class , 'editLogo']);
+Route::post('editarLogo/{id}' , [sponsorController::class , 'editLogo']);
 
 //Carrera
 Route::get('anyadirCarrera', [carreraController::class , 'showAddRace']);
