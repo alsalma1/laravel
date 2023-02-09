@@ -17,6 +17,7 @@ class CreatePicturesTable extends Migration
             $table->id();
             $table->unsignedBigInteger('race_id');
             $table->foreign('race_id')->references('id')->on('races');
+            $table->string('image');
             $table->timestamps();
         });
     }
