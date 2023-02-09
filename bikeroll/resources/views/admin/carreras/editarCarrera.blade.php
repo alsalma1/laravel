@@ -56,13 +56,13 @@
             <?php 
                 //Si la carrera ya ha terminado permitir subir fotos
                 if (date($row['date'])<date('Y-m-d H:i:s')){   
-                    ?><td><a href="activarAseguradora/{{$id}}"><img src="../resources/img/upload.png" alt=""></td><?php
+                    ?><td><a href="subirFotos/{{$id}}"><img src="../resources/img/upload.png" alt=""></a></td><?php
                 }
                 else{
-                    ?><td><a href="activarAseguradora/{{$id}}"><img src="../resources/img/bloquear.png" alt=""></td><?php
+                    ?><td><img src="../resources/img/bloquear.png" alt=""></td><?php
                 }
             ?>
-            <td><a href="activarAseguradora/{{$id}}"><img src="../resources/img/ver.png" alt=""></td>
+            <td><a href="verFotos/{{$id}}"><img src="../resources/img/ver.png" alt=""></a></td>
 
         </tr>
     @endforeach
