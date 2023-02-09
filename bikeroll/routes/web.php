@@ -64,7 +64,12 @@ Route::post('imagenCarrera/{id}', [carreraController::class , 'editImage']);
 Route::get('cartelCarrera/{id}', [carreraController::class , 'editProm']);
 Route::post('cartelCarrera/{id}', [carreraController::class , 'editProm']);
 
+//subir fotos
+Route::get('subirFotos/{id}', [pictureController::class , 'uploadF']);
+Route::post('subirFotos/{id}', [pictureController::class , 'uploadF']);
 
+//ver fotos
+Route::get('verFotos/{id}', [pictureController::class , 'viewF']);
 
 
 // Route::get('desactivarAsegurador' , function() {
