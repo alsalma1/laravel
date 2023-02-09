@@ -164,6 +164,7 @@ class carreraController extends Controller
         }
     }
 
+
     public function showEditRace(){
         $carreras = Race::all();
         return view('admin.carreras.editarCarrera',[
@@ -172,8 +173,5 @@ class carreraController extends Controller
         //echo $carreras;
     }
 
-    public function deleteRace(){
-        return view('admin.carreras.desactivarCarrera');
-
-    }
+    
 }
