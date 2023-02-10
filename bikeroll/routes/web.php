@@ -7,6 +7,7 @@ use App\Http\Controllers\aseguradoraController;
 use App\Http\Controllers\sponsorController;
 use App\Http\Controllers\corredorController;
 use App\Http\Controllers\carreraController;
+use App\Http\Controllers\pictureController;
 
 
 /*
@@ -25,6 +26,8 @@ Route::get('/', principalPageController::class);
 Route::get('/paginaPrincipal', [principalPageController::class , 'show']);
 
 Route::post('/formAdmin', [adminController::class , 'create']);
+
+Route::get('logout', [adminController::class , 'logout']);
 
 
 //Aseguradores

@@ -18,4 +18,4 @@
     </table>
     <input type="submit" value="Crear" name="create">
 </form>
-<a href="{{url('/paginaPrincipal')}}">Pagina principal</a>
+<a href="{{url('/paginaPrincipal')}}">Pagina principal</a>>
