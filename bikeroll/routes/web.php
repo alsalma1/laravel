@@ -21,6 +21,7 @@ use App\Http\Controllers\pictureController;
 |
 */
 
+
 Route::get('/', principalPageController::class);
 
 Route::get('/paginaPrincipal', [principalPageController::class , 'show']);
