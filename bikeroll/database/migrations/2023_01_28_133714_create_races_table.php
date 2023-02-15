@@ -15,7 +15,8 @@ class CreateRacesTable extends Migration
     {
         Schema::create('races', function (Blueprint $table) {
             $table->id();
-            $table->longText('description')->unique();
+            $table->longText('title')->unique();
+            $table->longText('description');
             $table->float('unevenness',4,2);//desnivel
             $table->string('image');
             $table->integer('number_participants');

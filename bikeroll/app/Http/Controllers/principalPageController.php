@@ -14,3 +14,5 @@ class principalPageController extends Controller
         return view('admin.paginaPrincipal');
     }
 }
+
+?>

@@ -15,6 +15,7 @@ class carreraController extends Controller
         
         if(isset($_POST['send']) && Race::where('description',request('description'))->count()==0){
             Race::create([
+                'title'=>request('title'),
                 'description'=>request('description'),
                 'unevenness'=>request('unevenness'),
                 'image'=>request('image'),
@@ -79,6 +80,7 @@ class carreraController extends Controller
     public function editRace(Request $request){
         $carrera = Race::find($request->id);
         if ($request->isMethod('post')){
+            $carrera->title = $request->input('title');
             $carrera->description = $request->input('description');
             $carrera->unevenness = $request->input('unevenness');
             $carrera->number_participants = $request->input('number_participants');
