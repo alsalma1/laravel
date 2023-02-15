@@ -8,7 +8,6 @@ class adminController extends Controller
 {
     //Crear un nuevo registro
     public function create(Request $request){
-        $request->session()->start();
         $admin = new Admin();
         if (isset($_POST['send'])){
             $user_name = $admin->user_name = $_POST['email'];
@@ -16,6 +15,7 @@ class adminController extends Controller
             //Si existe la clave primaria
             if (Admin::where('user_name', $user_name )->where('passwd',$passwd)->exists()) {
                 $_POST['email'] = session('admin');
+                $request->session()->start();
                 return redirect('/paginaPrincipal');
             }
             else{
@@ -23,6 +23,10 @@ class adminController extends Controller
                 return view('admin.formAdmin');
             }
         }
+    }
+
+    public function show(){
+        return view('admin.formAdmin');
     }
 
     public function logout(Request $request){

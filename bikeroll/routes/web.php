@@ -25,6 +25,7 @@ Route::get('/', principalPageController::class);
 
 Route::get('/paginaPrincipal', [principalPageController::class , 'show']);
 
+Route::get('/formAdmin', [adminController::class , 'show']);
 Route::post('/formAdmin', [adminController::class , 'create']);
 
 Route::get('logout', [adminController::class , 'logout']);

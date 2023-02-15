@@ -23,4 +23,4 @@
 </form>
 
 {{-- Aqui va el formulario del administrador --}}
-{{-- <a href="{{url('paginaPrincipal')}}">Iniciar sesion</a> --}}
+<a href="{{url('/')}}">Página principal</a> 
