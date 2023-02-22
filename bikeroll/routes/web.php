@@ -21,10 +21,11 @@ use App\Http\Controllers\pictureController;
 |
 */
 
-
 Route::get('/', principalPageController::class);
 
-Route::get('/paginaPrincipal', [principalPageController::class , 'show']);
+Route::get('paginaPrincipal', [principalPageController::class , 'show'])->name('paginaPrincipal');
+Route::get('paginaPrincipalAdmin', [principalPageController::class , 'showPrincipalPage'])->name('paginaPrincipalAdmin');
+
 
 Route::get('/formAdmin', [adminController::class , 'show']);
 Route::post('/formAdmin', [adminController::class , 'create']);
@@ -79,7 +80,5 @@ Route::post('subirFotos/{id}', [pictureController::class , 'uploadF']);
 //ver fotos
 Route::get('verFotos/{id}', [pictureController::class , 'viewF']);
 
-
-// Route::get('desactivarAsegurador' , function() {
-//     return view('admin.aseguradores.desactivarAsegurador');
-// });
+//Mostrar informacion carrera
+Route::get('infoRace/{id}' , [carreraController::class , 'showInfoRace']);
