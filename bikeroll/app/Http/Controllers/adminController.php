@@ -19,7 +19,9 @@ class adminController extends Controller
                 return view('admin.paginaPrincipal');
             }
             else{
-                ?><script>alert('Nombre de usuario o contraseña incorrectos');</script><?php
+                ?>
+                <script>alert('Nombre de usuario o contraseña incorrectos');</script>
+                <?php
                 return view('admin.formAdmin');
             }
         }

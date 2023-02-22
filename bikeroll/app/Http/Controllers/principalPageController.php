@@ -3,16 +3,24 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Models\Race;
 
 class principalPageController extends Controller
 {
     public function __invoke(){
-        return view('paginaPrincipal');
+        $races = Race::where('state',1)->get();
+        return view('paginaPrincipal' , [
+            'races' => $races
+        ]);
     }
 
     public function show(){
+        return view('paginaPrincipal');
+    }
+
+    public function showPrincipalPage(){
         return view('admin.paginaPrincipal');
     }
-}
 
-?>
+}

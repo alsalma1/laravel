@@ -44,10 +44,6 @@ class pictureController extends Controller
         }
     }
 
-
-
-
-
     public function viewF(Request $request){
         $carrera = Race::find($request->id);
         
