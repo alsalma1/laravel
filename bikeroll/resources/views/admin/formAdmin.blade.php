@@ -22,5 +22,4 @@
     </div>
 </form>
 
-{{-- Aqui va el formulario del administrador --}}
 <a href="{{url('/')}}">Página principal</a> 

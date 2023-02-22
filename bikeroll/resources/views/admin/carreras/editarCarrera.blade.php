@@ -8,7 +8,6 @@
 <table style="border-collapse:collapse">
     <tr>
         <th>Nº de carrera</th>
-        <th>Título</th>
         <th>Descripción</th>
         <th>Desnivel</th>
         <th>Mapa</th>
@@ -28,7 +27,6 @@
         @endphp
         <tr>
             <td>{{$row['id']}}</td>
-            <td>{{$row['title']}}</td>
             <td>{{$row['description']}}</td>
             <td>{{$row['unevenness']}} km</td>
             
@@ -70,4 +68,4 @@
     @endforeach
 </table>
 
-<a href="{{url('/paginaPrincipal')}}">Volver atras</a>
+<a href="{{url('paginaPrincipalAdmin')}}">Volver atras</a>
