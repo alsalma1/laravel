@@ -21,8 +21,9 @@ class CreateRunnersTable extends Migration
             $table->date('birth_date');
             $table->boolean('sex');
             $table->boolean('pro');
-            $table->string('federation_number');
+            $table->string('federation_number')->nullable();
             $table->integer('points');
+            $table->timestamps();
         });
     }
 
