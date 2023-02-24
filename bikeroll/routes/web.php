@@ -21,11 +21,17 @@ use App\Http\Controllers\pictureController;
 |
 */
 
+
 Route::get('/', principalPageController::class);
 
 Route::get('paginaPrincipal', [principalPageController::class , 'show'])->name('paginaPrincipal');
 Route::get('paginaPrincipalAdmin', [principalPageController::class , 'showPrincipalPage'])->name('paginaPrincipalAdmin');
 
+Route::get('altaCorredor/{id}', [corredorController::class , 'showForm']);
+
+
+
+Route::get('/paginaPrincipal', [principalPageController::class , 'show']);
 
 Route::get('/formAdmin', [adminController::class , 'show']);
 Route::post('/formAdmin', [adminController::class , 'create']);
