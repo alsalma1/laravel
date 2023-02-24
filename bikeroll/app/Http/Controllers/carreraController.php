@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Race;
-use Illuminate\Http\UploadedFile;
+
 use Illuminate\Support\Str;
 
 use Illuminate\Support\Facades\DB;
@@ -15,6 +15,7 @@ class carreraController extends Controller
         
         if(isset($_POST['send']) && Race::where('description',request('description'))->count()==0){
             Race::create([
+                'title'=>request('title'),
                 'description'=>request('description'),
                 'unevenness'=>request('unevenness'),
                 'image'=>request('image'),
@@ -32,10 +33,8 @@ class carreraController extends Controller
             //subir la imagen
             if($request->hasFile('image')){
                 $imagen = $request->file('image');
-                //$image = $request->image->store('public');
-    
                 $promotion = $request->file('promotion');
-                //$image::create(['image' => $image]);
+
                 //aquí le asignamos el nombre
                 $nombreimagen = Str::slug($request->file('image')).".".$imagen->guessExtension();
                 $nombreprom = Str::slug($request->file('promotion')).".".$promotion->guessExtension();
@@ -81,6 +80,7 @@ class carreraController extends Controller
     public function editRace(Request $request){
         $carrera = Race::find($request->id);
         if ($request->isMethod('post')){
+            $carrera->title = $request->input('title');
             $carrera->description = $request->input('description');
             $carrera->unevenness = $request->input('unevenness');
             $carrera->number_participants = $request->input('number_participants');
@@ -88,7 +88,8 @@ class carreraController extends Controller
             $carrera->date = $request->input('date');
             $carrera->start = $request->input('start');
             $carrera->price = $request->input('price');
-            
+
+
             $carrera->save();
             $carrera = Race::all();
             return redirect()->route('editarCarrera' , [
@@ -164,6 +165,7 @@ class carreraController extends Controller
             ]);
         }
     }
+
 
     public function showEditRace(){
         $carreras = Race::all();

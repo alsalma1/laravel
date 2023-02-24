@@ -5,9 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Picture extends Model
+class Runner extends Model
 {
     use HasFactory;
-    protected $table="pictures";
-    protected $fillable = ['race_id', 'image'];
 }

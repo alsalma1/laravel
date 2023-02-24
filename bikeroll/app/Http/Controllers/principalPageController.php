@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use App\Models\Race;
 
 class principalPageController extends Controller
@@ -16,11 +15,12 @@ class principalPageController extends Controller
     }
 
     public function show(){
-        return view('paginaPrincipal');
+        return view('admin.paginaPrincipal');
     }
 
     public function showPrincipalPage(){
         return view('admin.paginaPrincipal');
     }
-
 }
+
+?>
