@@ -8,6 +8,12 @@
 <form action="{{$carreras['id']}}" method="POST">
     @csrf
     <div class="form-group row">
+      <label for="description" class="col-sm-2 col-form-label">Título</label>
+      <div class="col-sm-10">
+        <textarea id="title" name="title" required>{{$carreras['title']}}</textarea>
+      </div>
+    </div>
+    <div class="form-group row">
       <label for="description" class="col-sm-2 col-form-label">Descripción</label>
       <div class="col-sm-10">
         <textarea id="description" name="description" required>{{$carreras['description']}}</textarea>

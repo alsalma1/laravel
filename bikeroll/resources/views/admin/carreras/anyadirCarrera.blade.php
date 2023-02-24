@@ -4,6 +4,12 @@
 <form action="anyadirCarrera" method="POST" accept-charset="UTF-8" class="formaddcarrera" enctype="multipart/form-data">
   @csrf
     <div class="form-group row">
+      <label for="description" class="col-sm-2 col-form-label">Título</label>
+      <div class="col-sm-10">
+        <input type="text" id="title" name="title" max-length="100" required>
+      </div>
+    </div>
+    <div class="form-group row">
       <label for="description" class="col-sm-2 col-form-label">Descripción</label>
       <div class="col-sm-10">
         <textarea id="description" name="description" required></textarea>
@@ -73,4 +79,4 @@
     </div>
 </form>
 
-<p><a href="{{url('paginaPrincipalAdmin')}}">Volver atrás</a></p>
+<p><a href="{{url('paginaPrincipal')}}">Volver atrás</a></p>
