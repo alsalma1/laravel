@@ -5,8 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Runner extends Model
+class Sponsor extends Model
 {
     use HasFactory;
-    protected $fillable=['name','last_name','adress','birth_date','sex','pro','federation_number','points'];
+    protected $fillable = ['name', 'description' , 'logo' , 'main_plain'];
 }
