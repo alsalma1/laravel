@@ -22,6 +22,8 @@ class CreateEnsuresTable extends Migration
             //Foreign keys
             $table->foreign('id_insurances')->references('id')->on('insurances');
             $table->foreign('id_runner')->references('id')->on('runners');
+
+            $table->timestamps();
         });
     }
 

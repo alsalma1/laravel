@@ -20,12 +20,14 @@ class CreateInscriptionsTable extends Migration
             $table->unsignedBigInteger('id_insurances');
             $table->longText('qr');
             $table->text('PayPal_email');
-            $table->date('finish_time');
+            $table->date('finish_time')->nullable();
 
             //Foreign Keys
             $table->foreign('id_insurances')->references('id')->on('insurances');
             $table->foreign('runner_id')->references('id')->on('runners');
             $table->foreign('race_id')->references('id')->on('races');
+
+            $table->timestamps();
         });
     }
 
