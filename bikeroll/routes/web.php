@@ -7,6 +7,7 @@ use App\Http\Controllers\aseguradoraController;
 use App\Http\Controllers\sponsorController;
 use App\Http\Controllers\corredorController;
 use App\Http\Controllers\carreraController;
+use App\Http\Controllers\inscripcionController;
 use App\Http\Controllers\pictureController;
 
 
@@ -89,3 +90,7 @@ Route::get('verFotos/{id}', [pictureController::class , 'viewF']);
 
 //Mostrar informacion carrera
 Route::get('infoRace/{id}' , [carreraController::class , 'showInfoRace']);
+
+
+//inscripcion
+Route::get('inscribir', [inscripcionController::class, 'inscribir'])->name('ins');
