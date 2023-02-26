@@ -4,13 +4,20 @@ function mostrarMenu(){
 
 //alta corredor
   function show(){
-    document.getElementById('divOp').style.visibility="visible";
+    document.getElementById('divOp').style.display="block";
     document.getElementById('fed').required=true;
+
+    document.getElementById('divHd').style.display="none";
+    document.getElementById('aseguradora').required=false;
   }
 
   function hide(){
-    document.getElementById('divOp').style.visibility="hidden";
+    document.getElementById('divOp').style.display="none";
     document.getElementById('fed').required=false;
+
+    document.getElementById('divHd').style.display="block";
+    document.getElementById('aseguradora').required=true;
+
   }
 
 //   document.getElementById('pro').addEventListener("click", show);
