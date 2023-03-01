@@ -18,6 +18,7 @@ class CreateInsurancesTable extends Migration
             $table->string('CIF',9);
             $table->string('name');
             $table->string('address');
+            $table->integer('price');
             $table->boolean('estado')->default(1);;
             $table->timestamps();
         });

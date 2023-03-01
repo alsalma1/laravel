@@ -16,12 +16,11 @@ class CreateEnsuresTable extends Migration
         Schema::create('ensures', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('id_insurances');
-            $table->unsignedBigInteger('id_runner');
+            $table->unsignedBigInteger('id_race');
             $table->integer('price');
 
             //Foreign keys
             $table->foreign('id_insurances')->references('id')->on('insurances');
-            $table->foreign('id_runner')->references('id')->on('runners');
 
             $table->timestamps();
         });
