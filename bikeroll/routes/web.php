@@ -7,9 +7,10 @@ use App\Http\Controllers\aseguradoraController;
 use App\Http\Controllers\sponsorController;
 use App\Http\Controllers\corredorController;
 use App\Http\Controllers\carreraController;
-use App\Http\Controllers\inscripcionController;
 use App\Http\Controllers\pictureController;
 
+
+use App\Http\Controllers\inscripcionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,7 +22,6 @@ use App\Http\Controllers\pictureController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 
 Route::get('/', principalPageController::class);
 
@@ -94,3 +94,12 @@ Route::get('infoRace/{id}' , [carreraController::class , 'showInfoRace']);
 
 //inscripcion
 Route::get('inscribir', [inscripcionController::class, 'inscribir'])->name('ins');
+Route::post('inscribir', [inscripcionController::class, 'inscribir'])->name('ins');
+
+
+//escoger aseguradora carrera
+Route::get('aseguradoraC/{id}', [aseguradoraController::class, 'precioCarrera']);
+Route::post('aseguradoraC/{id}', [aseguradoraController::class, 'precioCarrera']);
+
+//Paypal
+Route::get('/paypal/pay', 'App\Http\Controllers\PaymentController@payWithPayPal')->name('paypal');
