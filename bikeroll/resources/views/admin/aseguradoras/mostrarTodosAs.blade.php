@@ -10,6 +10,7 @@
         <th>CIF</th>
         <th>Nombre</th>
         <th>Dirección</th>
+        <th>Precio base</th>
         <th>Estado</th>
         <th>Editar</th>
     </tr>
@@ -21,6 +22,7 @@
             <td>{{$row['CIF']}}</td>
             <td>{{$row['name']}}</td>
             <td>{{$row['address']}}</td>
+            <td>{{$row['price']}}€</td>
             <td>
                 @if ($row['estado'] == 0)
                     <a href="activarAseguradora/{{$id}}"><img src="../resources/img/off.png" alt=""></a>

@@ -54,7 +54,7 @@
         </div>
     </div>
 
-    <div class="form-group row" style="display:none"   id="divHd">
+    <div class="form-group row" style="display:none;"   id="divHd">
         <label class="col-sm-2 col-form-label">Aseguradora</label>
         <div class="col-sm-10">
           <select name="aseguradora" id="aseguradora">
@@ -68,6 +68,11 @@
         </div>
     </div>
 
+    <div class="form-group row" style="display:none;"  id="divH">
+        <div class="col-sm-10">
+          <p class="form-control">Precio <?php echo $races['price'];?>€</p>
+        </div>
+    </div>
    
 
     <div class="form-group row">

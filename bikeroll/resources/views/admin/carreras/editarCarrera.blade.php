@@ -21,6 +21,8 @@
         <th>Editar</th>
         <th>Subir fotos</th>
         <th>Ver fotos</th>
+        <th>Gestionar aseguradoras</th>
+
     </tr>
     @foreach($carreras as $row)
         @php
@@ -65,6 +67,9 @@
                 }
             ?>
             <td><a href="verFotos/{{$id}}"><img src="../resources/img/ver.png" alt=""></a></td>
+
+            <td><a href="aseguradoraC/{{$id}}"><img src="../resources/img/edit.png" alt=""></a></td>
+
 
         </tr>
     @endforeach

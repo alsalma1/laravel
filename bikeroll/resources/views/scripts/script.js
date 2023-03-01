@@ -8,6 +8,7 @@ function mostrarMenu(){
     document.getElementById('fed').required=true;
 
     document.getElementById('divHd').style.display="none";
+    document.getElementById('divH').style.display="none";
     document.getElementById('aseguradora').required=false;
   }
 
@@ -16,6 +17,7 @@ function mostrarMenu(){
     document.getElementById('fed').required=false;
 
     document.getElementById('divHd').style.display="block";
+    document.getElementById('divH').style.display="block";
     document.getElementById('aseguradora').required=true;
 
   }
