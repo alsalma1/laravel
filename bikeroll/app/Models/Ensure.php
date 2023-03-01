@@ -8,6 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Ensure extends Model
 {
     use HasFactory;
-    protected $fillable=['id_insurances','id_runner','price'];
+    protected $fillable=['id_insurances','id_race','price'];
     
 }

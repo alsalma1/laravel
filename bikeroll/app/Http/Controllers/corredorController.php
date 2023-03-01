@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Runner;
 use App\Models\Race;
 use App\Models\Insurance;
+use App\Models\Inscription;
 
 
 class corredorController extends Controller
@@ -18,50 +19,60 @@ class corredorController extends Controller
 
 
         if(isset ($_POST['inscription'])){
+            //control de isncripciones
+            if (Inscription::find(request('id'))->count()<$races->number_participants){
+                if(request('sexo')=='masculino'){
+                    $sex=1;
+                }
+                else{
+                    $sex=0;
+                }
 
-            $nombre=request('nombre');
-            $apellido=request('appelido');
-            $bith=request('birth');
 
-            if(request('sexo')=='masculino'){
-                $sex=1;
+                if(request('option')=='pro'){
+                    $pro=1;
+                }
+                else{
+                    $pro=0;
+                }
+
+
+                $runner=Runner::create([
+                    'name'=>request('nombre'),
+                    'last_name'=>request('surname'),
+                    'adress'=>request('direction'),
+                    'birth_date'=>request('birth'),
+                    'sex'=>$sex,
+                    'pro'=>$pro,
+                    'federation_number'=>request('fed'),
+                    'points'=>0
+
+                ]);
+
+                // $corredor=DB::table('runners')->where('name', request('nombre') );
+                $nameAs=request('aseguradora');
+
+                $As=Insurance::where('name', $nameAs)->first();
+                //hacerlo así si no peta(poner nombre en la ruta!!)
+                
+                if ($pro==0){
+                    return redirect()->route('ins',[
+                            'runner'=>$runner->id,
+                            'id'=> request('id'),
+                            'aseguradora' => $As->id
+                    ]);
+                }
+                else{
+                    return redirect('/');
+                }
             }
             else{
-                $sex=0;
+                ?> <script>alert('No se pueden inscribir más corredores')</script> <?php
+                return view('corredor.altaCorredor',[
+                    'races' => $races,
+                    'aseguradoras' => Insurance::all()
+                ]);
             }
-
-
-            if(request('pro')=='pro'){
-                $pro=1;
-            }
-            else{
-                $pro=0;
-            }
-
-
-            $runner=Runner::create([
-                'name'=>request('nombre'),
-                'last_name'=>request('surname'),
-                'adress'=>request('direction'),
-                'birth_date'=>request('birth'),
-                'sex'=>$sex,
-                'pro'=>$pro,
-                'federation_number'=>request('fed'),
-                'points'=>0
-
-            ]);
-            // $corredor=DB::table('runners')->where('name', request('nombre') );
-            $nameAs=request('aseguradora');
-
-            $As=Insurance::where('name', $nameAs)->first();
-            //hacerlo así si no peta(poner nombre en la ruta!!)
-            
-
-         return redirect()->route('ins',[
-                'runner'=>$runner->id,
-                'id'=> request('id'),
-                'aseguradora' => $As->id
-          ]);
             
         }
         else{

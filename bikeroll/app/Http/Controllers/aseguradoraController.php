@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Insurance;
+use App\Models\Ensure;
 
 class aseguradoraController extends Controller
 {
@@ -27,6 +28,7 @@ class aseguradoraController extends Controller
             else{
                 $insurance->name = $_POST['insuranceName'];
                 $insurance->address = $_POST['insuranceAdress'];
+                $insurance->price = $_POST['price'];
                 $insurance->save();
                 ?>
                 <script>alert("Se ha creado correctamente!")</script>
@@ -80,5 +82,37 @@ class aseguradoraController extends Controller
         <script>alert("Inicia sesión para ver esta página!")</script>
         <?php
         return redirect('/');
+    }
+
+    public function precioCarrera(Request $request){
+        //id carrera primer paso
+        $id = $request->id;
+        
+        if (isset($_POST['envio'])){
+            foreach ($_POST['opciones'] as $as) {
+                //coge el id de la aseguradora
+                $insurance= Insurance::find($as);
+
+                $ensure= new Ensure();
+                $ensure->id_insurances = $as;
+                $ensure->id_race = $request->idC;
+
+                //coger el precio base + km // 2
+                $ensure->price = $insurance->price+rand(10,50);
+                $ensure->save();
+
+                $insurance=Insurance::all();
+                return redirect()->route('mostrarTodosAs' , ['carreras'=>$insurance]); 
+                
+            }
+
+            //id carrera último paso
+            // echo $request->idC;
+            
+        }
+        else{
+            $insurance = Insurance::all();
+            return view('admin.aseguradoras.altaCarrera',['insurance' => $insurance, 'idC' => $id]);
+        }
     }
 }
