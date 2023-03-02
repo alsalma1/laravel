@@ -17,5 +17,16 @@
         <p><a href="{{url('mostrarSponsors')}}">Mostrar todos</a></p>
         <p><a href="{{url('anyadirSponsor')}}">Añadir sponsor</a></p>
     </div>
+
+    <div style="border:1px solid;width:100%;text-align:center">
+        <h3>Corredores apuntados</h3>
+        <p><a href="{{url('verCorredores')}}">Ver corredores apuntados</a></p>
+    </div>
+
+    <div style="border:1px solid;width:100%;text-align:center">
+        <h3>Sponsors y carreras</h3>
+        <p><a href="{{url('sponsorCarrera')}}">Sponsor patroniza carrera</a></p>
+        <p><a href="{{url('verCorredores')}}">Ver los sponsors</a></p>
+    </div>
 </div>
 <h3><a href="{{url('logout')}}">Cerrar sesión</a></h3>

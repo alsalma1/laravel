@@ -3,19 +3,22 @@
     @csrf
     <table>
         <tr>
-            <td>Nombre</td>
+            <th>Nombre</th>
             <td><input type="text" name="name" id="name" maxlength="100" required></td>
         </tr>
         <tr>
-            <td>Descripción</td>
+            <th>Descripción</th>
             <td><textarea name="desc" id="desc" cols="21" rows="5" required></textarea></td>
         </tr>
         <tr>
-            <td>logo</td>
+            <th>logo</th>
             <td><input type="file" name="logo" id="logo"required></td>
         </tr>
+        <tr></tr>
         <tr>
-            <td>Plana principal</td>
+            <th>Plana principal</th>
+        </tr>
+        <tr>
             <td>
                 <input type="radio" id="opt1" name="pp" value="1" required/>
                 <label for="op1">Sí</label>
@@ -24,15 +27,9 @@
                 <label for="op2">No</label>
             </td>
         </tr>
+
         <tr>
-            {{-- <td>Carrera</td> --}}
-            {{-- <td>
-                <select name="raceid" id="raceid">
-                    @foreach($race as $item)
-                        <option value="{{$item['id']}}">{{$item['id']}}</option>
-                    @endforeach
-                </select>
-            </td> --}}
+            <th>Carreras</th>
         </tr>
     </table>
     <input type="submit" value="Crear" name="create">

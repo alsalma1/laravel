@@ -1,10 +1,9 @@
 <style>
     td,th{border: 1px solid;}
-    th:last-child{width: 20%}
     td:last-child img{width: 50px}
-    td{width: 15%}
-    table{width: 70%;margin: auto;text-align: center;}
-    img{width: 50%;height: 50%}
+    td{width: 12.85%}
+    table{width: 90%;margin: auto;text-align: center;}
+    img{width: 30%;height: 30%}
 </style>
 <h1>sponsors</h1>
 <table style="border-collapse:collapse">
@@ -15,6 +14,7 @@
         <th>plana principal</th>
         <th>Estado</th>
         <th>Editar</th>
+        <th>Seleccionar carreras</th>
     </tr>
     @foreach($sponsor as $row)
         @php
@@ -46,6 +46,9 @@
             <td>
                 <a href="editarSponsor/{{$id}}"><img src="../resources/img/edit.png" alt=""></a>
                 <a href="editarLogo/{{$id}}"><img src="../resources/img/pic.png" alt=""></a>
+            </td>
+            <td>
+                <a href="selectRaces/{{$id}}"><img src="../resources/img/choice.png" alt="checkbox icon"></a>
             </td>
         </tr>
     @endforeach

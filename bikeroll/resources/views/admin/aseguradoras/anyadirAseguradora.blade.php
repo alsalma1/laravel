@@ -15,6 +15,10 @@
             <td>Dirección</td>
             <td><input type="text" name="insuranceAdress" id="insuranceAdress" required></td>
         </tr>
+        <tr>
+            <td>Precio</td>
+            <td><input type="number" name="insurancePrice" required></td>
+        </tr>
     </table>
     <input type="submit" value="Crear" name="create">
 </form>

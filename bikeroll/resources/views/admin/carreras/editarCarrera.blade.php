@@ -8,7 +8,6 @@
 <table style="border-collapse:collapse">
     <tr>
         <th>Nº de carrera</th>
-        <th>Título</th>
         <th>Descripción</th>
         <th>Desnivel</th>
         <th>Mapa</th>
@@ -21,8 +20,6 @@
         <th>Editar</th>
         <th>Subir fotos</th>
         <th>Ver fotos</th>
-        <th>Gestionar aseguradoras</th>
-
     </tr>
     @foreach($carreras as $row)
         @php
@@ -30,7 +27,6 @@
         @endphp
         <tr>
             <td>{{$row['id']}}</td>
-            <td>{{$row['title']}}</td>
             <td>{{$row['description']}}</td>
             <td>{{$row['unevenness']}} km</td>
             
@@ -68,11 +64,8 @@
             ?>
             <td><a href="verFotos/{{$id}}"><img src="../resources/img/ver.png" alt=""></a></td>
 
-            <td><a href="aseguradoraC/{{$id}}"><img src="../resources/img/edit.png" alt=""></a></td>
-
-
         </tr>
     @endforeach
 </table>
 
-<a href="{{url('/paginaPrincipal')}}">Volver atras</a>
+<a href="{{url('paginaPrincipalAdmin')}}">Volver atras</a>

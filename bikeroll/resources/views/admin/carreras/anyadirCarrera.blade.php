@@ -79,4 +79,4 @@
     </div>
 </form>
 
-<p><a href="{{url('paginaPrincipal')}}">Volver atrás</a></p>
+<p><a href="{{url('paginaPrincipalAdmin')}}">Volver atrás</a></p>
