@@ -28,7 +28,6 @@ class aseguradoraController extends Controller
             else{
                 $insurance->name = $_POST['insuranceName'];
                 $insurance->address = $_POST['insuranceAdress'];
-                $insurance->price = $_POST['price'];
                 $insurance->save();
                 ?>
                 <script>alert("Se ha creado correctamente!")</script>

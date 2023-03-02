@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\Patronize;
 use App\Models\Sponsor;
 use App\Models\Race;
 use Illuminate\Http\Request;
@@ -32,7 +34,7 @@ class sponsorController extends Controller
                     'logo' => $request->file('logo'),
                     'main_plain' => $request->input('pp'),
                 ]);
-                
+
                 //subir la imagen
                 if($request->hasFile('logo')){
                     $imagen = $request->file('logo');
@@ -46,12 +48,22 @@ class sponsorController extends Controller
                     //$imagen->move($ruta,$nombreimagen);
                     copy($imagen->getRealPath(),$ruta.$nombreimagen);        
                 }
+                //Obtener el valor de los checkbox seleccionados
+                if(isset($_POST['racescheck'])) {
+                    $racesSeleccionadas = $_POST['racescheck'];
+                    foreach($racesSeleccionadas as $race) {
+                        $patronizar = Patronize::create([
+                            'sponsor_id' => $request->input('name'),
+                            'race_id' => $request->$race,
+                        ]);
+                    }
+                }
                 return redirect('mostrarSponsors');
             }
         }        
         else{
-            $race = Race::where('state', 1)->get();
-            return view('admin.sponsors.anyadirSponsor' , ['race' => $race]);
+            $races = Race::where('state', 1)->get();
+            return view('admin.sponsors.anyadirSponsor' , ['races' => $races]);
         }
     }
 

@@ -26,8 +26,6 @@ class carreraController extends Controller
                 'start'=>request('start'),
                 'state'=>1,
                 'price'=>request('price')
-               
-
             ]);  
 
             //subir la imagen
@@ -183,5 +181,23 @@ class carreraController extends Controller
         ]);
     }
 
-    
+    public function showAllRaces(Request $request){
+        if (isset($_POST['buscador'])){
+            $buscador = $request->input('buscador');
+            $races = Race::where('description', 'like', '%' . $buscador . '%')
+                        ->orWhere('unevenness', 'like', '%' . $buscador . '%')
+                        ->orWhere('number_participants', 'like', '%' . $buscador . '%')
+                        ->orWhere('km', 'like', '%' . $buscador . '%')
+                        ->orWhere('date', 'like', '%' . $buscador . '%')
+                        ->orWhere('start', 'like', '%' . $buscador . '%')
+                        ->orWhere('price', 'like', '%' . $buscador . '%')
+                        ->get();
+        }
+        else{
+            $races = Race::all();
+        }
+        return view('admin.inscripciones.inscripcion' , [
+            'races' => $races
+        ]);
+    }
 }

@@ -16,10 +16,12 @@ class adminController extends Controller
             if (Admin::where('user_name', $user_name )->where('passwd',$passwd)->exists()) {
                 $_POST['email'] = session('admin');
                 $request->session()->start();
-                return redirect('/paginaPrincipal');
+                return view('admin.paginaPrincipal');
             }
             else{
-                ?><script>alert('Nombre de usuario o contraseña incorrectos');</script><?php
+                ?>
+                <script>alert('Nombre de usuario o contraseña incorrectos');</script>
+                <?php
                 return view('admin.formAdmin');
             }
         }
