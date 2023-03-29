@@ -12,3 +12,4 @@ class Race extends Model
     protected $fillable=['title','description','unevenness','image','number_participants','km','date','promotion','start','state','price'];
 
 }
+?>

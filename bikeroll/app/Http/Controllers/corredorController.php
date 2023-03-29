@@ -7,20 +7,20 @@ use App\Models\Runner;
 use App\Models\Race;
 use App\Models\Insurance;
 use App\Models\Inscription;
+use App\Models\Ensure;
 
-
-class corredorController extends Controller
-{
+class corredorController extends Controller{
     //
     public function showForm(Request $request){
         //común para enviar a inscripciones y form
         $id = $request->id;
         $races = Race::find($id);
 
-
         if(isset ($_POST['inscription'])){
             //control de isncripciones
-            if (Inscription::find(request('id'))->count()<$races->number_participants){
+            
+            //el ordden es importante ... >:CCC
+            if (Inscription::find(request('id'))==NULL || Inscription::all()->count()<$races->number_participants){
                 if(request('sexo')=='masculino'){
                     $sex=1;
                 }
@@ -28,14 +28,12 @@ class corredorController extends Controller
                     $sex=0;
                 }
 
-
                 if(request('option')=='pro'){
                     $pro=1;
                 }
                 else{
                     $pro=0;
                 }
-
 
                 $runner=Runner::create([
                     'name'=>request('nombre'),
@@ -55,16 +53,17 @@ class corredorController extends Controller
                 $As=Insurance::where('name', $nameAs)->first();
                 //hacerlo así si no peta(poner nombre en la ruta!!)
                 
-                if ($pro==0){
+                // if ($pro==0){
                     return redirect()->route('ins',[
                             'runner'=>$runner->id,
                             'id'=> request('id'),
-                            'aseguradora' => $As->id
+                            'aseguradora' => $As->id,
+                            'pro' => $pro
                     ]);
-                }
-                else{
-                    return redirect('/');
-                }
+                //}
+                // else{
+                //     return redirect('/');
+                // }
             }
             else{
                 ?> <script>alert('No se pueden inscribir más corredores')</script> <?php
@@ -76,13 +75,15 @@ class corredorController extends Controller
             
         }
         else{
-        return view('corredor.altaCorredor',[
-            'races' => $races,
-            'aseguradoras' => Insurance::all()
-        ]);
+            return view('corredor.altaCorredor',[
+                'races' => $races,
+                'aseguradoras' => Insurance::select('insurances.*')
+                ->join('ensures', 'ensures.id_insurances', '=', 'insurances.id')->
+                where('ensures.id_race','=', $id)->get(),
+
+                'ensures' => Ensure::select('ensures.*')->where('ensures.id_race', '=', $id)->get()
+            ]);
         }
 
     }
-
-
 }

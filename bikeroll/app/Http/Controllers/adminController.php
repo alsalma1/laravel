@@ -16,7 +16,7 @@ class adminController extends Controller
             if (Admin::where('user_name', $user_name )->where('passwd',$passwd)->exists()) {
                 $_POST['email'] = session('admin');
                 $request->session()->start();
-                return view('admin.paginaPrincipal');
+                return redirect('/paginaPrincipal');
             }
             else{
                 ?>

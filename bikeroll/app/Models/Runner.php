@@ -11,3 +11,4 @@ class Runner extends Model
     protected $table="runners";
     protected $fillable=['name','last_name','adress','birth_date','sex','pro','federation_number','points'];
 }
+?>

@@ -9,3 +9,4 @@ class Insurance extends Model
 {
     use HasFactory;
 }
+?>

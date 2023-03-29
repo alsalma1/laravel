@@ -34,7 +34,7 @@ class sponsorController extends Controller
                     'logo' => $request->file('logo'),
                     'main_plain' => $request->input('pp'),
                 ]);
-
+                
                 //subir la imagen
                 if($request->hasFile('logo')){
                     $imagen = $request->file('logo');
@@ -62,8 +62,8 @@ class sponsorController extends Controller
             }
         }        
         else{
-            $races = Race::where('state', 1)->get();
-            return view('admin.sponsors.anyadirSponsor' , ['races' => $races]);
+            $race = Race::where('state', 1)->get();
+            return view('admin.sponsors.anyadirSponsor' , ['race' => $race]);
         }
     }
 
@@ -132,4 +132,5 @@ class sponsorController extends Controller
             ]);
         }
     }
+
 }

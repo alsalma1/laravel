@@ -10,3 +10,4 @@ class Sponsor extends Model
     use HasFactory;
     protected $fillable = ['name', 'description' , 'logo' , 'main_plain'];
 }
+?>

@@ -11,3 +11,4 @@ class Picture extends Model
     protected $table="pictures";
     protected $fillable = ['race_id', 'image'];
 }
+?>

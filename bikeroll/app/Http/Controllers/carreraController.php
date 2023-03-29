@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Race;
-
+use App\Models\Runner;
+use App\Models\Inscription;
 use Illuminate\Support\Str;
-
 use Illuminate\Support\Facades\DB;
 
 class carreraController extends Controller
@@ -43,7 +43,6 @@ class carreraController extends Controller
                 //$imagen->move($ruta,$nombreimagen);
                 copy($imagen->getRealPath(),$ruta.$nombreimagen);     
                 copy($promotion->getRealPath(),$ruta.$nombreprom);     
-                
             }
         }
         else{
@@ -181,6 +180,21 @@ class carreraController extends Controller
         ]);
     }
 
+    public function qr(Request $request){ 
+        $id = $request -> id;
+        $races = Race::find($id);
+
+        //importante el where!
+        $runner = Runner::select('runners.*')->join('inscriptions', 'inscriptions.runner_id', '=', 'runners.id')->join('races', 'races.id','=','inscriptions.race_id')->where('inscriptions.race_id',$id)->get();
+        $dorsales= Inscription::where('race_id',$id)->get();
+        //rellenar los dorsales
+        return view('admin.carreras.qrs',[
+            'races' => $races,
+            'runner' => $runner,
+            'dorsales' => $dorsales
+        ]);   
+    }
+    
     public function showAllRaces(Request $request){
         if (isset($_POST['buscador'])){
             $buscador = $request->input('buscador');
@@ -201,3 +215,5 @@ class carreraController extends Controller
         ]);
     }
 }
+
+?>

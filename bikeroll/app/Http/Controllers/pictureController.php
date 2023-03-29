@@ -54,4 +54,16 @@ class pictureController extends Controller
         ]);
         
     }
+
+    public function viewPage(Request $request){
+        $carrera = Race::find($request->id);
+        
+        $pictures= Picture::where('race_id',$request->id)->get();
+        return view('fotosCarreras' ,[
+            'fotos' => $pictures,
+            'carreras'=> $carrera
+        ]);
+        
+    }
 }
+?>

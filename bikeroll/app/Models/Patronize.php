@@ -8,5 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Patronize extends Model
 {
     use HasFactory;
-    protected $table = "atronize";
+    protected $table = "patronize";
+    protected $fillable=['sponsor_id' , 'race_id'];
 }
+?>

@@ -11,3 +11,4 @@ class Ensure extends Model
     protected $fillable=['id_insurances','id_race','price'];
     
 }
+?>
