@@ -26,7 +26,7 @@ use App\Models\Inscription;
 
 Route::get('/', principalPageController::class , 'show');
 
-Route::get('paginaPrincipal', [principalPageController::class , 'show'])->name('paginaPrincipal');
+Route::get('paginaPrincipal', [principalPageController::class , 'showPrincipalPage'])->name('paginaPrincipal');
 Route::get('paginaPrincipalAdmin', [principalPageController::class , 'showPrincipalPage'])->name('paginaPrincipalAdmin');
 
 Route::get('altaCorredor/{id}', [corredorController::class , 'showForm']);
@@ -37,7 +37,6 @@ Route::post('/formAdmin', [adminController::class , 'create']);
 
 Route::get('logout', [adminController::class , 'logout']);
 
-
 //Aseguradores
 Route::get('anyadirAseguradora', [aseguradoraController::class , 'create']);
 Route::post('anyadirAseguradora', [aseguradoraController::class , 'create']);
@@ -45,7 +44,6 @@ Route::get('mostrarTodosAs', [aseguradoraController::class , 'index'])->name('mo
 Route::get('editarAseguradora/{id}' , [aseguradoraController::class , 'edit']);
 Route::post('editarAseguradora/{id}' , [aseguradoraController::class , 'edit']);
 Route::get('activarAseguradora/{id}' , [aseguradoraController::class , 'activate']);
-
 
 //Sponsors
 Route::get('anyadirSponsor' , [sponsorController::class , 'create']);
@@ -57,6 +55,8 @@ Route::get('activarSponsor/{id}' , [sponsorController::class , 'activate']);
 Route::get('editarLogo/{id}' , [sponsorController::class , 'editLogo']);
 Route::post('editarLogo/{id}' , [sponsorController::class , 'editLogo']);
 
+//seleccionar las carreras
+Route::post('chooseRaces/{id}' , [patronizeController::class , 'showRaces']);
 //Carrera
 Route::get('anyadirCarrera', [carreraController::class , 'showAddRace']);
 
@@ -97,6 +97,7 @@ Route::get('sponsorCarrera' , [patronizeController::class , 'showSponsors']);
 
 //Mostrar informacion carrera
 Route::get('infoRace/{id}' , [carreraController::class , 'showInfoRace']);
+Route::get('fotosRace/{id}', [pictureController::class , 'viewPage']);
 
 //inscripcion
 Route::get('inscribir', [inscripcionController::class, 'inscribir'])->name('ins');
@@ -106,12 +107,20 @@ Route::post('inscribir', [inscripcionController::class, 'inscribir'])->name('ins
 Route::get('aseguradoraC/{id}', [aseguradoraController::class, 'precioCarrera']);
 Route::post('aseguradoraC/{id}', [aseguradoraController::class, 'precioCarrera']);
 
+//qrcarreras
+Route::get('qr/{id}', [carreraController::class , 'qr']);
+
+//Elegir carreras de sponsor
+Route::get('selectRaces/{id}' , [patronizeController::class , 'showRaces']);
+
 //Paypal
 Route::get('/paypal/pay', 'App\Http\Controllers\PaymentController@payWithPayPal')->name('paypal');
+Route::get('/paypal/status', 'App\Http\Controllers\PaymentController@payPalStatus')->name('status');
 
-//Seleccionar las carreras para cada sponsor
-Route::get('selectRaces/{id}' , [patronizeController::class , 'showRaces']);
-Route::post('selectRaces' , [patronizeController::class , 'showRaces'])->name('selectRaces');
+//Factura corredor
+Route::get('facturaCorredor' ,[inscripcionController::class , 'facturaCorredor'])->name('facturaCorredor');
+Route::post('facturaCorredor' ,[inscripcionController::class , 'facturaCorredor'])->name('facturaCorredor');
 
 //descargar pdf
-Route::get('download-pdf', [inscripcionController::class, 'downloadPdf'])->name('download-pdf');
+Route::get('download-pdf/{id}', [patronizeController::class, 'downloadPdf'])->name('download-pdf');
+?>
