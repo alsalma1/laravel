@@ -17,8 +17,8 @@ class CreateInscriptionsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('runner_id');
             $table->unsignedBigInteger('race_id');
-            $table->unsignedBigInteger('id_insurances');
-            $table->longText('qr');
+            $table->unsignedBigInteger('id_insurances')->nullable();
+            $table->integer('dorsal')->nullable();
             $table->text('PayPal_email');
             $table->date('finish_time')->nullable();
 
