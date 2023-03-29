@@ -3,9 +3,16 @@
     td:last-child img{width: 50px}
     td{width: 12.85%}
     table{width: 90%;margin: auto;text-align: center;}
-    img{width: 30%;height: 30%}
+    img{width: 40px;height: 40px}
 </style>
 <h1>sponsors</h1>
+{{-- Para mostrar la alerta con el mensaje --}}
+@if (session('mensaje'))
+    <script>
+        alert('{{ session('mensaje') }}');
+    </script>
+@endif
+{{-- -------------------------------------- --}}
 <table style="border-collapse:collapse">
     <tr>
         <th>Nombre</th>
@@ -15,6 +22,7 @@
         <th>Estado</th>
         <th>Editar</th>
         <th>Seleccionar carreras</th>
+        <th>Descargar pdf</th>
     </tr>
     @foreach($sponsor as $row)
         @php
@@ -27,7 +35,7 @@
             <?php 
             $logo=preg_replace('([^A-Za-z0-9 ])', '', $row['logo']);
             ?>
-            <td><img src="../resources/img/<?php echo strtolower($logo) ?>.jpg" alt=""></td>
+            <td><img src="../resources/img/<?php echo strtolower($logo) ?>.png" alt=""></td>
 
             <td>
                 @if($row['main_plain'] == 0)
@@ -50,8 +58,11 @@
             <td>
                 <a href="selectRaces/{{$id}}"><img src="../resources/img/choice.png" alt="checkbox icon"></a>
             </td>
+            <td>
+                <a href="download-pdf/{{$id}}"><img src="../resources/img/download.png" alt="descargar pdf"></a>
+            </td>
         </tr>
     @endforeach
 </table>
 
-<a href="{{url('/paginaPrincipal')}}">Volver atras</a>
+<a href="{{url('/paginaPrincipal')}}">Pagina principal</a>

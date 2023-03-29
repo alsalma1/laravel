@@ -17,7 +17,7 @@
         </tr>
         <tr>
             <td>Precio</td>
-            <td><input type="number" name="insurancePrice" required></td>
+            <td><input type="number" name="price" id="insuranceAdress" required></td>
         </tr>
     </table>
     <input type="submit" value="Crear" name="create">

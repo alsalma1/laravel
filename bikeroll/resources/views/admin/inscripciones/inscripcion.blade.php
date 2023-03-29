@@ -44,3 +44,5 @@
     </div>
     @endforeach
 @endif
+
+<a href="{{url('/paginaPrincipal')}}">Pagina principal</a>

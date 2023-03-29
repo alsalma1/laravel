@@ -1,4 +1,5 @@
-<link rel="stylesheet" href="../resources/css/app.css">
+@extends('layouts.layout')
+@section('content')
 <h1>Información carrera</h1>
 
 {{-- info carrera --}}
@@ -38,15 +39,21 @@
 </div>
 
 <?php $id=$races['id']; 
+
+
 //revisar
+
 //ver si la fecha de la carrera es más grande que hoy
 $fecha_actual = date("d-m-Y");
 $newDate = date("d-m-Y", strtotime($races['date'])); 
+
 //calcular el intervalo
 $hoy=now();
 $carrera=$races->date;
 $intervalo = $hoy->diff($carrera);
-if ($intervalo->m<=1 && $intervalo->d<=30 && $newDate<$fecha_actual){ ?>
+
+
+if ($intervalo->m<=1 && $intervalo->d<=30 && $newDate>$fecha_actual){ ?>
 
 <h3><a href="{{ url('/altaCorredor/'.$id) }}">Darse de alta</a></h3>
 
@@ -55,3 +62,4 @@ if ($intervalo->m<=1 && $intervalo->d<=30 && $newDate<$fecha_actual){ ?>
 <div>
     <a href="{{url('/')}}">Pagina principal</a>
 </div>
+@endsection

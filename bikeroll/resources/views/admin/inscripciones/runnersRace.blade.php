@@ -25,7 +25,6 @@
             <th>Pro</th>
             <th>Numero federación</th>
             <th>Puntos</th>
-            <th>Generar QR</th>
         </tr>
         @foreach($runners as $runner)
             @php
@@ -53,9 +52,9 @@
                     <td>----</td>
                 @endif
                 <td>{{$runner->points}}</td>
-                <td><a href="">QR</a></td>
             </tr>
         @endforeach
     </table>
-
 @endif
+
+<a href="{{url('/paginaPrincipal')}}">Pagina principal</a>

@@ -16,4 +16,4 @@
     @endforeach
 </table>
 
-<a href="{{url('/editarCarrera')}}">Volver atras</a>
+<a href="{{url('/')}}">Volver atras</a>
